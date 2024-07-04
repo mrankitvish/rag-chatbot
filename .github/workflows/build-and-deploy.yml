@@ -13,6 +13,7 @@ jobs:
       - name: Create Docker image
         run: |
           docker build -t mrankitvish/rag-chatbot:latest .
+          docker tag mrankitvish/rag-chatbot:latest mrankitvish/rag-chatbot:latest 
                  
   push:
     needs: build
