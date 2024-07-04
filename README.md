@@ -1,4 +1,4 @@
-# FastAPI LangChain Application
+# RAG Chatbot using LangChain, Ollama (LLM), PG Vector (vector store db) and FastAPI
 
 This FastAPI application leverages LangChain to provide chat functionalities powered by HuggingFace embeddings and Ollama language models. It supports initializing a PostgreSQL vector database with text or CSV data.
 
@@ -15,6 +15,7 @@ This FastAPI application leverages LangChain to provide chat functionalities pow
   ```sh
   docker run --name pgvector-container -e POSTGRES_USER=langchain -e POSTGRES_PASSWORD=langchain -e POSTGRES_DB=langchain -p 5432:5432 -d pgvector/pgvector:pg16
   ```
+- Ollama server for LLM
 
 ## Installation
 
@@ -50,10 +51,11 @@ This FastAPI application leverages LangChain to provide chat functionalities pow
     DB_PASSWD=your_database_password
     DATA=path_to_your_text_data_file
     DATA_CSV=path_to_your_csv_data_file
-    LLM_MODEL=your_llama_model
-    LLM_BASEURL=your_llama_base_url
+    LLM_MODEL=your_Ollama_model_name
+    LLM_BASEURL=your_Ollama_server_url
     TOP_K=5
     ```
+    `Note` Here LLM is used via Ollama
 
 ## Running the Application
 
@@ -135,3 +137,10 @@ To initialize the database with text data:
 
 ```sh
 curl -X POST http://127.0.0.1:8000/db_init/txt
+```
+### To access SwaggerUI 
+```sh
+http://127.0.0.1:8000/docs
+```
+
+
