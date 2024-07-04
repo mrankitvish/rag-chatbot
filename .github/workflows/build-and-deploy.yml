@@ -14,11 +14,6 @@ jobs:
         run: |
           docker build -t mrankitvish/rag-chatbot:latest .
           docker tag mrankitvish/rag-chatbot:latest mrankitvish/rag-chatbot:latest 
-                 
-  push:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Docker Login
         uses: docker/login-action@v2
         with:
