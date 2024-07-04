@@ -1,0 +1,30 @@
+
+LangChain is a framework for developing applications powered by language models.
+
+LangChain provides many modules that can be used to build language model applications. Modules can be used as standalones in simple applications and they can be composed for more complex use cases. Composition is powered by LangChain Expression Language (LCEL), which defines a unified Runnable interface that many modules implement, making it possible to seamlessly chain components.
+
+The simplest and most common chain contains three things:
+
+LLM/Chat Model: The language model is the core reasoning engine here. In order to work with LangChain, you need to understand the different types of language models and how to work with them.
+Prompt Template: This provides instructions to the language model. This controls what the language model outputs, so understanding how to construct prompts and different prompting strategies is crucial.
+Output Parser: These translate the raw response from the language model to a more workable format, making it easy to use the output downstream.
+
+There are two types of language models:
+
+LLM: underlying model takes a string as input and returns a string
+ChatModel: underlying model takes a list of messages as input and returns a message
+Strings are simple, but what exactly are messages? The base message interface is defined by BaseMessage, which has two required attributes:
+
+content: The content of the message. Usually a string.
+role: The entity from which the BaseMessage is coming.
+LangChain provides several objects to easily distinguish between different roles:
+
+HumanMessage: A BaseMessage coming from a human/user.
+AIMessage: A BaseMessage coming from an AI/assistant.
+SystemMessage: A BaseMessage coming from the system.
+FunctionMessage / ToolMessage: A BaseMessage containing the output of a function or tool call.
+If none of those roles sound right, there is also a ChatMessage class where you can specify the role manually.
+
+LangChain provides a common interface that's shared by both LLMs and ChatModels. However it's useful to understand the difference in order to most effectively construct prompts for a given language model.
+
+The simplest way to call an LLM or ChatModel is using .invoke(), the universal synchronous call method for all LangChain Expression Language (LCEL) objects:
